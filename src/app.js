@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import FastClick from 'fastclick';
 import Router from './routes';
 import Location from './core/Location';
+import UserActions from './actions/UserActions';
 import { addEventListener, removeEventListener } from './core/DOMUtils';
 
 let cssContainer = document.getElementById('css');
@@ -53,6 +54,11 @@ function run() {
 
   // Make taps on links and buttons work fast on mobiles
   FastClick.attach(document.body);
+
+  let jwt = localStorage.getItem('jwt');
+  if (jwt) {
+    UserActions.loginUser(jwt);
+  }
 
   // Re-render the app when window.location changes
   const unlisten = Location.listen(location => {
