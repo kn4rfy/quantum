@@ -18,24 +18,10 @@ class Footer extends Component {
   };
 
   render() {
-    // This is just an example how one can render CSS
-    const { width, height } = this.props.viewport;
-    this.renderCss(`.Footer-viewport:after {content:' ${width}x${height}';}`);
-
     return (
-      <div className="Footer">
-        <div className="Footer-container">
-          <span className="Footer-text">© Your Company</span>
-          <span className="Footer-spacer">·</span>
-          <a className="Footer-link" href="/" onClick={Link.handleClick}>Home</a>
-          <span className="Footer-spacer">·</span>
-          <a className="Footer-link" href="/privacy" onClick={Link.handleClick}>Privacy</a>
-          <span className="Footer-spacer">·</span>
-          <a className="Footer-link" href="/not-found" onClick={Link.handleClick}>Not Found</a>
-          <span className="Footer-spacer"> | </span>
-          <span ref="viewport" className="Footer-viewport Footer-text Footer-text--muted">Viewport:</span>
-        </div>
-      </div>
+      <footer className="footer">
+        <p>© 2015 <a href="https://github.com/kn4rfy/quantum">Quantum</a></p>
+      </footer>
     );
   }
 

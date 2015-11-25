@@ -17,6 +17,7 @@
     "front-matter": "2.0.0",
     "history": "1.13.1",
     "jade": "1.11.0",
+    "jsonwebtoken": "^5.4.1",
     "normalize.css": "3.0.3",
     "postcss-url": "^5.0.2",
     "react": "0.14.2",

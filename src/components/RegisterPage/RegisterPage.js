@@ -1,9 +1,9 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 import React, { PropTypes, Component } from 'react';
-import Auth from '../../services/AuthService'
-import withStyles from '../../decorators/withStyles';
 import styles from './RegisterPage.scss';
+import withStyles from '../../decorators/withStyles';
+import Auth from '../../services/AuthService';
 
 @withStyles(styles)
 class RegisterPage extends Component {
@@ -11,16 +11,6 @@ class RegisterPage extends Component {
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,
   };
-
-  constructor() {
-    super()
-    this.state = {
-      fullname: '',
-      email: '',
-      username: '',
-      password: '',
-    };
-  }
 
   signup(e) {
     e.preventDefault();
@@ -44,8 +34,8 @@ class RegisterPage extends Component {
       <div className="RegisterPage">
         <div className="RegisterPage-container container">
           <div className="row">
-            <div className="col-md-4 col-md-offset-4">
-              <div className="login-panel panel panel-primary">
+            <div className="col-sm-4 col-sm-offset-4">
+              <div className="panel panel-info">
                 <div className="panel-heading">
                   <h3 className="panel-title">Please Register</h3>
                 </div>
@@ -64,7 +54,7 @@ class RegisterPage extends Component {
                       <div className="form-group">
                         <input type="password" className="form-control" placeholder="Password" onChange={this.handleChange.bind(this, 'password')} required/>
                       </div>
-                      <button className="btn btn-lg btn-success btn-block" type="submit" onClick={this.signup.bind(this)}>Register</button>
+                      <button className="btn btn-outline btn-info btn-block" type="submit" onClick={this.signup.bind(this)}>Register</button>
                     </fieldset>
                   </form>
                 </div>

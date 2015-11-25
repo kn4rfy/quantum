@@ -2,8 +2,8 @@
 
 import React, { PropTypes, Component } from 'react';
 import styles from './LoginPage.scss';
-import Auth from '../../services/AuthService'
 import withStyles from '../../decorators/withStyles';
+import Auth from '../../services/AuthService';
 
 @withStyles(styles)
 class LoginPage extends Component {
@@ -11,14 +11,6 @@ class LoginPage extends Component {
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,
   };
-
-  constructor() {
-    super()
-    this.state = {
-      username: '',
-      password: ''
-    };
-  }
 
   login(e) {
     e.preventDefault();
@@ -42,8 +34,8 @@ class LoginPage extends Component {
       <div className="LoginPage">
         <div className="LoginPage-container container">
           <div className="row">
-            <div className="col-md-4 col-md-offset-4">
-              <div className="login-panel panel panel-primary">
+            <div className="col-sm-4 col-sm-offset-4">
+              <div className="panel panel-success">
                 <div className="panel-heading">
                   <h3 className="panel-title">Please Login</h3>
                 </div>
@@ -62,7 +54,7 @@ class LoginPage extends Component {
                           Remember Me
                         </label>
                       </div>
-                      <button className="btn btn-lg btn-success btn-block" type="submit" onClick={this.login.bind(this)}>Login</button>
+                      <button className="btn btn-outline btn-success btn-block" type="submit" onClick={this.login.bind(this)}>Login</button>
                     </fieldset>
                   </form>
                 </div>

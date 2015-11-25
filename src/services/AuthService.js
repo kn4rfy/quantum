@@ -1,7 +1,8 @@
 import request from 'reqwest';
 import when from 'when';
-import {LOGIN_URL, SIGNUP_URL} from '../constants/UserConstants';
-import UserActions from '../actions/UserActions';
+import {LOGIN_URL, SIGNUP_URL} from '../constants/LoginConstants';
+import LoginActions from '../actions/LoginActions';
+import jwt from 'jsonwebtoken';
 
 class AuthService {
 
@@ -14,11 +15,11 @@ class AuthService {
       data: {
         username, password
       }
-    })).then(function(response) {
-      var jwt = response.id;
-      UserActions.loginUser(jwt);
+    }).then(function(response) {
+      var token = jwt.sign(response, 'secretOrPublicKey');
+      LoginActions.loginUser(token);
       return true;
-    });;
+    }));
   }
 
   logout() {
@@ -34,10 +35,10 @@ class AuthService {
       data: {
         fullname, email, username, password
       }
-    })).then(function() {
-      UserActions.registerUser();
+    }).then(function() {
+      LoginActions.signupUser();
       return true;
-    });
+    }));
   }
 }
 

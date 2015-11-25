@@ -3,10 +3,18 @@
 import 'babel-core/polyfill';
 import ReactDOM from 'react-dom';
 import FastClick from 'fastclick';
-import Router from './routes';
+import Router, { router } from './routes';
 import Location from './core/Location';
-import UserActions from './actions/UserActions';
 import { addEventListener, removeEventListener } from './core/DOMUtils';
+import RouterContainer from './services/RouterContainer';
+import LoginActions from './actions/LoginActions';
+
+RouterContainer.set(router);
+
+let token = localStorage.getItem('token');
+if (token) {
+  LoginActions.loginUser(token);
+}
 
 let cssContainer = document.getElementById('css');
 const appContainer = document.getElementById('app');
@@ -54,11 +62,6 @@ function run() {
 
   // Make taps on links and buttons work fast on mobiles
   FastClick.attach(document.body);
-
-  let jwt = localStorage.getItem('jwt');
-  if (jwt) {
-    UserActions.loginUser(jwt);
-  }
 
   // Re-render the app when window.location changes
   const unlisten = Location.listen(location => {
